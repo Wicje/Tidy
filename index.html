@@ -1,161 +1,177 @@
 <!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Professional cleaning services by TIDY. Book now for exceptional results."
+    />
+    <title>TIDY — Professional Cleaning Services</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Lato:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
+      integrity="sha512-7y8k5dH2oQKxS1x7sQy6wXwGQ8bM8eY7o1cQ4Yp8M3e4u3xqEJd3j2w7a8ZCj9c0qj1m8aQ2KZV0rQXWg7gNQg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"
+      integrity="sha512-4n2l2GxE6rYwq9m5g7zQxg4q8m8i+z7a0y0v9Vh7e+J7hXnI4v1bP+1b3cYVZrj6oQYv7yXJf8Hj9l4pQ8d0Nw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TIDY — Professional Cleaning Services</title>
-  <link rel="stylesheet" href="css/styles.css" />
-  <!-- GSAP CDN Links (optional, include only if using animations) -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
-    integrity="sha512-7y8k5dH2oQKxS1x7sQy6wXwGQ8bM8eY7o1cQ4Yp8M3e4u3xqEJd3j2w7a8ZCj9c0qj1m8aQ2KZV0rQXWg7gNQg=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"
-    integrity="sha512-4n2l2GxE6rYwq9m5g7zQxg4q8m8i+z7a0y0v9Vh7e+J7hXnI4v1bP+1b3cYVZrj6oQYv7yXJf8Hj9l4pQ8d0Nw=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-</head>
+  <body>
+    <header class="navbar">
+      <div class="logo">TIDY<span>.</span></div>
+      <nav class="nav-menu">
+        <ul class="nav-list">
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#why-choose">About</a></li>
+          <li><a href="#team">Team</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="hamburger">☰</div>
+      </nav>
+    </header>
 
-<body>
-  <!-- ===== Navbar ===== -->
-  <header class="navbar">
-    <div class="logo">TIDY<span>.</span></div>
-    <nav>
-      <ul>
-        <li><a href="#hero">Home</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#why-choose">About</a></li>
-        <li><a href="#team">Projects</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
+    <section id="hero" class="hero" data-reveal>
+      <div class="hero-content">
+        <h1 class="fade-up">Professional Cleaning Services</h1>
+        <h2 class="fade-up delay-1">
+          Effortless Cleaning, Exceptional Results
+        </h2>
+        <p class="fade-up delay-2">
+          Book now and experience the difference with our trusted team.
+        </p>
+        <div class="buttons fade-up delay-3">
+          <button id="book-btn" class="primary-btn">Book Your Cleaning</button>
+          <button class="secondary-btn" id="watch-demo-btn">Watch Demo</button>
+        </div>
+        <div class="hero-counter fade-up delay-4">
+          <span class="count" data-target="500">0</span>+ Homes Cleaned
+        </div>
+      </div>
+      <img
+        src="images/hero-image.jpg"
+        alt="Person cleaning"
+        class="hero-image parallax-img"
+        loading="lazy"
+      />
+    </section>
 
-  <!-- ===== Hero ===== -->
-  <section id="hero" class="hero" data-reveal>
-    <div class="hero-content">
-      <h1 class="fade-up">Professional Cleaning Services</h1>
-      <h2 class="fade-up delay-1">
-        Effortless Cleaning, Exceptional Results
-      </h2>
-      <p class="fade-up delay-2">
-        Book now and experience the difference with our trusted team.
-      </p>
-      <div class="buttons fade-up delay-3">
-        <button id="book-btn" class="primary-btn">Book Your Cleaning</button>
-        <button class="secondary-btn" id="watch-demo-btn">Watch Demo</button>
+    <section id="services" class="services" data-reveal>
+      <h2 class="fade-up">Our Services</h2>
+      <div class="service-cards">
+        <div class="card scale-up">
+          <img src="images/home-icon.svg" alt="Home" loading="lazy" />
+          <h3>Home Cleaning</h3>
+          <p>Thorough cleaning for your residential spaces.</p>
+        </div>
+        <div class="card scale-up delay-1">
+          <img src="images/office-icon.svg" alt="Office" loading="lazy" />
+          <h3>Office Cleaning</h3>
+          <p>Keep your workspace spotless and productive.</p>
+        </div>
+        <div class="card scale-up delay-2">
+          <img src="images/deep-icon.svg" alt="Deep" loading="lazy" />
+          <h3>Deep Cleaning</h3>
+          <p>Intensive cleaning for hard-to-reach areas.</p>
+        </div>
+        <div class="card scale-up delay-3">
+          <img
+            src="images/post-icon.svg"
+            alt="Post-Construction"
+            loading="lazy"
+          />
+          <h3>Post-Construction Cleaning</h3>
+          <p>Clean up after renovations or builds.</p>
+        </div>
       </div>
-      <!-- Counter -->
-      <div class="hero-counter fade-up delay-4">
-        <span class="count" data-target="500">0</span>+ Homes Cleaned
-      </div>
-    </div>
-    <img src="images/hero-image.jpg" alt="Person cleaning" class="hero-image parallax-img" />
-  </section>
+    </section>
 
-  <!-- ===== Services ===== -->
-  <section id="services" class="services" data-reveal>
-    <h2 class="fade-up">Our Services</h2>
-    <div class="service-cards">
-      <div class="card scale-up">
-        <img src="images/home-icon.svg" alt="Home" />
-        <h3>Home Cleaning</h3>
-        <p>Thorough cleaning for your residential spaces.</p>
+    <section id="why-choose" class="why-choose" data-reveal>
+      <h2 class="fade-up">Why Choose Us?</h2>
+      <div class="why-grid">
+        <div class="why-item scale-up">
+          <img src="images/trusted.jpg" alt="Trusted" loading="lazy" />
+          <h3>Trusted Professionals</h3>
+          <p>Experienced and vetted team members.</p>
+        </div>
+        <div class="why-item scale-up delay-1">
+          <img src="images/eco.jpg" alt="Eco-Friendly" loading="lazy" />
+          <h3>Eco-Friendly Products</h3>
+          <p>Safe for kids, pets, and the planet.</p>
+        </div>
+        <div class="why-item scale-up delay-2">
+          <img src="images/flexible.jpg" alt="Flexible" loading="lazy" />
+          <h3>Flexible Scheduling</h3>
+          <p>Weekly, bi-weekly, monthly, or one-time.</p>
+        </div>
       </div>
-      <div class="card scale-up delay-1">
-        <img src="images/office-icon.svg" alt="Office" />
-        <h3>Office Cleaning</h3>
-        <p>Keep your workspace spotless and productive.</p>
-      </div>
-      <div class="card scale-up delay-2">
-        <img src="images/deep-icon.svg" alt="Deep" />
-        <h3>Deep Cleaning</h3>
-        <p>Intensive cleaning for hard-to-reach areas.</p>
-      </div>
-      <div class="card scale-up delay-3">
-        <img src="images/post-icon.svg" alt="Post-Construction" />
-        <h3>Post-Construction Cleaning</h3>
-        <p>Clean up after renovations or builds.</p>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ===== Why Choose Us ===== -->
-  <section id="why-choose" class="why-choose" data-reveal>
-    <h2 class="fade-up">Why Choose Us?</h2>
-    <div class="why-grid">
-      <div class="why-item scale-up">
-        <img src="images/trusted.jpg" alt="Trusted" />
-        <h3>Trusted Professionals</h3>
-        <p>Experienced and vetted team members.</p>
+    <section id="team" class="team" data-reveal>
+      <h2 class="fade-up">Meet Our Professional Team</h2>
+      <div class="team-members">
+        <div class="member fade-in">
+          <img src="images/team1.jpg" alt="Tochukwu" loading="lazy" />
+          <h3>Tochukwu</h3>
+          <p>Deep Cleaning Expert</p>
+        </div>
+        <div class="member fade-in delay-1">
+          <img src="images/team2.jpg" alt="Celestine" loading="lazy" />
+          <h3>Celestine</h3>
+          <p>Office Cleaning Coordinator</p>
+        </div>
+        <div class="member fade-in delay-2">
+          <img src="images/team3.jpg" alt="Josephan" loading="lazy" />
+          <h3>Josephan</h3>
+          <p>Residential Cleaning Specialist</p>
+        </div>
       </div>
-      <div class="why-item scale-up delay-1">
-        <img src="images/eco.jpg" alt="Eco-Friendly" />
-        <h3>Eco-Friendly Products</h3>
-        <p>Safe for kids, pets, and the planet.</p>
-      </div>
-      <div class="why-item scale-up delay-2">
-        <img src="images/flexible.jpg" alt="Flexible" />
-        <h3>Flexible Scheduling</h3>
-        <p>Weekly, bi-weekly, monthly, or one-time.</p>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ===== Team ===== -->
-  <section id="team" class="team" data-reveal>
-    <h2 class="fade-up">Meet Our Professional Team</h2>
-    <div class="team-members">
-      <div class="member fade-in">
-        <img src="images/team1.jpg" alt="Tochukwu" />
-        <h3>Tochukwu</h3>
-        <p>Deep Cleaning Expert</p>
+    <section id="testimonials" class="testimonials" data-reveal>
+      <h2 class="fade-up">What Clients Say About Us?</h2>
+      <div class="testimonial-cards">
+        <div class="testimonial quote-slide">
+          <p>"Amazing service! My home sparkles."</p>
+          <cite>- Alice</cite>
+        </div>
+        <div class="testimonial quote-slide delay-1">
+          <p>"Professional and efficient."</p>
+          <cite>- Bob</cite>
+        </div>
+        <div class="testimonial quote-slide delay-2">
+          <p>"Eco-friendly and thorough."</p>
+          <cite>- Charlie</cite>
+        </div>
       </div>
-      <div class="member fade-in delay-1">
-        <img src="images/team2.jpg" alt="Celestine" />
-        <h3>Celestine</h3>
-        <p>Office Cleaning Coordinator</p>
-      </div>
-      <div class="member fade-in delay-2">
-        <img src="images/team3.jpg" alt="Josephan" />
-        <h3>Josephan</h3>
-        <p>Residential Cleaning Specialist</p>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ===== Testimonials ===== -->
-  <section id="testimonials" class="testimonials" data-reveal>
-    <h2 class="fade-up">What Clients Say About Us?</h2>
-    <div class="testimonial-cards">
-      <div class="testimonial quote-slide">
-        <p>"Amazing service! My home sparkles."</p>
-        <cite>- Alice</cite>
-      </div>
-      <div class="testimonial quote-slide delay-1">
-        <p>"Professional and efficient."</p>
-        <cite>- Bob</cite>
-      </div>
-      <div class="testimonial quote-slide delay-2">
-        <p>"Eco-friendly and thorough."</p>
-        <cite>- Charlie</cite>
-      </div>
-    </div>
-  </section>
+    <section id="contact" class="contact" data-reveal>
+      <h3 class="fade-up">Get in Touch</h3>
+      <p class="fade-up delay-1">We respond instantly on WhatsApp</p>
+      <form id="contact-form" class="fade-up delay-2">
+        <input type="text" placeholder="Your Name" required />
+        <button type="submit" class="primary-btn">Send Message</button>
+      </form>
+    </section>
 
-  <!-- ===== Contact ===== -->
-  <section id="contact" class="contact" data-reveal>
-    <h3 class="fade-up">Get in Touch</h3>
-    <p class="fade-up delay-1">We respond instantly on WhatsApp</p>
-    <button id="contact-btn" class="primary-btn fade-up delay-2">
-      <img src="images/whatsapp-icon.svg" alt="WhatsApp" /> Chat on WhatsApp
-    </button>
-  </section>
+    <button id="scroll-top" class="scroll-top-btn">↑</button>
 
-  <footer>
-    <p>TIDY.</p>
-  </footer>
+    <footer class="footer">
+      <p>&copy; 2025 TIDY. All rights reserved.</p>
+    </footer>
 
-  <script src="js/script.js"></script>
-</body>
-
+    <script src="js/script.js"></script>
+  </body>
 </html>

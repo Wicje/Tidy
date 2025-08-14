@@ -1,5 +1,5 @@
 (function () {
-  // Smooth scrolling for nav + active link highlight
+  // Smooth scrolling and active link highlight
   const links = document.querySelectorAll("nav a");
   let activeLink = null;
   links.forEach((link) => {
@@ -11,137 +11,151 @@
       if (target) {
         target.scrollIntoView({ behavior: "smooth" });
       }
-      if (activeLink) {
-        activeLink.classList.remove("active");
-      }
+      if (activeLink) activeLink.classList.remove("active");
       link.classList.add("active");
       activeLink = link;
+      // Close mobile menu
+      if (window.innerWidth <= 768) {
+        document.querySelector(".nav-list").classList.remove("active");
+        document.querySelector(".hamburger").classList.remove("active");
+      }
     });
   });
 
-  // WhatsApp redirects (Book + Contact)
-  const phoneNumber = "+2349135536900";
-  const message = encodeURIComponent("Hello, I need cleaning services!");
-  const wa = () => window.open(`https://wa.me/${phoneNumber}?text=${message}`, "_blank");
-
-  const bookBtn = document.getElementById("book-btn");
-  if (bookBtn) bookBtn.addEventListener("click", wa);
-
-  const contactBtn = document.getElementById("contact-btn");
-  if (contactBtn) contactBtn.addEventListener("click", wa);
-
-  // Counter (triggers once when visible)
-  const counterEl = document.querySelector(".hero-counter .count");
-  if (counterEl) {
-    const target = +counterEl.getAttribute("data-target");
-    let current = 0;
-    const tick = () => {
-      const step = Math.max(1, Math.ceil(target / 100));
-      current = Math.min(target, current + step);
-      counterEl.textContent = String(current);
-      if (current < target) setTimeout(tick, 20);
-    };
-    const io =
-      "IntersectionObserver" in window
-        ? new IntersectionObserver(
-            (entries, obs) => {
-              entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                  tick();
-                  obs.disconnect();
-                }
-              });
-            },
-            { threshold: 0.5 }
-          )
-        : null;
-    if (io) {
-      io.observe(document.querySelector(".hero-counter"));
-    } else {
-      tick();
-    }
+  // Mobile Menu Toggle
+  const hamburger = document.querySelector(".hamburger");
+  if (hamburger) {
+    hamburger.addEventListener("click", () => {
+      const navList = document.querySelector(".nav-list");
+      hamburger.classList.toggle("active");
+      navList.classList.toggle("active");
+    });
   }
 
-  // Parallax hero image (subtle, guarded)
+  // WhatsApp Form Handling
+  const form = document.getElementById("contact-form");
+  if (form) {
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const name = form.querySelector("input[type='text']").value.trim();
+    //  const email = form.querySelector("input[type='email']").value.trim();
+  //    const message = form.querySelector("textarea").value.trim();
+
+      if (!name) {
+        alert("Please fill in all fields.");
+        return;
+      }
+      /*if (!email.includes("@")) {
+        alert("Please enter a valid email.");
+        return;
+      }*/
+
+      const phoneNumber = "+2349135536900";
+      const whatsappMessage = encodeURIComponent(`I am in need of cleaning Services - ${name}`);
+      window.open(`https://wa.me/${phoneNumber}?text=${whatsappMessage}`, "_blank");
+      form.reset();
+    });
+  }
+
+  // Dynamic Counter
+  const counterEl = document.querySelector(".hero-counter .count");
+  if (counterEl) {
+    function animateCounter() {
+      const target = +counterEl.getAttribute("data-target") || 500;
+      let current = 0;
+      const tick = () => {
+        const step = Math.max(1, Math.ceil(target / 100));
+        current = Math.min(target, current + step);
+        counterEl.textContent = String(current);
+        if (current < target) requestAnimationFrame(tick);
+      };
+      tick();
+    }
+    animateCounter(); // Run on load
+    const io = "IntersectionObserver" in window
+      ? new IntersectionObserver(
+          (entries) => {
+            if (entries[0].isIntersecting) animateCounter();
+          },
+          { threshold: 0.5 }
+        )
+      : null;
+    if (io) io.observe(document.querySelector(".hero-counter"));
+  }
+
+  // Parallax Hero Image
   const heroImg = document.querySelector(".parallax-img");
   if (heroImg) {
     document.addEventListener("mousemove", (e) => {
-      const mx = (e.clientX / window.innerWidth - 0.5) * 16;
-      const my = (e.clientY / window.innerHeight - 0.5) * 16;
+      const mx = (e.clientX / window.innerWidth - 0.5) * 20;
+      const my = (e.clientY / window.innerHeight - 0.5) * 20;
       heroImg.style.transform = `translate(${mx}px, ${my}px)`;
     });
   }
 
-  // GSAP animations (progressive; content is already visible)
+  // Scroll to Top
+  const scrollTopBtn = document.getElementById("scroll-top");
+  if (scrollTopBtn) {
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 300) scrollTopBtn.style.display = "block";
+      else scrollTopBtn.style.display = "none";
+    });
+    scrollTopBtn.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  }
+
+  // GSAP Animations
   if (window.gsap) {
     gsap.registerPlugin(ScrollTrigger);
-
-    // Fade-up
     gsap.utils.toArray(".fade-up").forEach((el) => {
-      const delay = el.classList.contains("delay-3")
-        ? 0.6
-        : el.classList.contains("delay-2")
-        ? 0.4
-        : el.classList.contains("delay-1")
-        ? 0.2
-        : 0;
+      const delay = el.classList.contains("delay-3") ? 0.6
+        : el.classList.contains("delay-2") ? 0.4
+        : el.classList.contains("delay-1") ? 0.2 : 0;
       gsap.from(el, {
-        scrollTrigger: { trigger: el, start: "top 85%" },
+        scrollTrigger: { trigger: el, start: "top 90%" },
         opacity: 0,
         y: 40,
-        duration: 0.9,
+        duration: 1,
         ease: "power3.out",
         delay,
       });
     });
 
-    // Scale-up Cards
     gsap.utils.toArray(".scale-up").forEach((el) => {
-      const delay = el.classList.contains("delay-3")
-        ? 0.6
-        : el.classList.contains("delay-2")
-        ? 0.4
-        : el.classList.contains("delay-1")
-        ? 0.2
-        : 0;
+      const delay = el.classList.contains("delay-3") ? 0.6
+        : el.classList.contains("delay-2") ? 0.4
+        : el.classList.contains("delay-1") ? 0.2 : 0;
       gsap.from(el, {
         scrollTrigger: { trigger: el, start: "top 90%" },
         opacity: 0,
         scale: 0.92,
-        duration: 0.8,
-        ease: "back.out(1.6)",
+        duration: 0.9,
+        ease: "back.out(1.7)",
         delay,
       });
     });
 
-    // Team fade-in
     gsap.utils.toArray(".fade-in").forEach((el) => {
-      const delay = el.classList.contains("delay-2")
-        ? 0.4
-        : el.classList.contains("delay-1")
-        ? 0.2
-        : 0;
+      const delay = el.classList.contains("delay-2") ? 0.4
+        : el.classList.contains("delay-1") ? 0.2 : 0;
       gsap.from(el, {
         scrollTrigger: { trigger: el, start: "top 90%" },
         opacity: 0,
-        duration: 0.9,
+        duration: 1,
         ease: "power2.out",
         delay,
       });
     });
 
-    // Testimonials slide
     gsap.utils.toArray(".quote-slide").forEach((el) => {
-      const delay = el.classList.contains("delay-2")
-        ? 0.4
-        : el.classList.contains("delay-1")
-        ? 0.2
-        : 0;
+      const delay = el.classList.contains("delay-2") ? 0.4
+        : el.classList.contains("delay-1") ? 0.2 : 0;
       gsap.from(el, {
         scrollTrigger: { trigger: el, start: "top 92%" },
         opacity: 0,
         x: -40,
-        duration: 0.8,
+        duration: 0.9,
         ease: "power2.out",
         delay,
       });
