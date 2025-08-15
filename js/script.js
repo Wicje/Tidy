@@ -32,26 +32,35 @@
     });
   }
 
+  // Book Button Redirect to Contact Form
+  const bookBtn = document.getElementById("book-btn");
+  if (bookBtn) {
+    bookBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      const contactSection = document.querySelector("#contact");
+      if (contactSection) {
+        contactSection.scrollIntoView({ behavior: "smooth" });
+        // Optional: Focus on the name input for better UX
+        const nameInput = document.querySelector("#contact-form input[type='text']");
+        if (nameInput) nameInput.focus();
+      }
+    });
+  }
+
   // WhatsApp Form Handling
   const form = document.getElementById("contact-form");
   if (form) {
     form.addEventListener("submit", (e) => {
       e.preventDefault();
       const name = form.querySelector("input[type='text']").value.trim();
-    //  const email = form.querySelector("input[type='email']").value.trim();
-  //    const message = form.querySelector("textarea").value.trim();
 
       if (!name) {
-        alert("Please fill in all fields.");
+        alert("Please enter your name.");
         return;
       }
-      /*if (!email.includes("@")) {
-        alert("Please enter a valid email.");
-        return;
-      }*/
 
       const phoneNumber = "+2349135536900";
-      const whatsappMessage = encodeURIComponent(`I am in need of cleaning Services - ${name}`);
+      const whatsappMessage = encodeURIComponent(`I am in need of cleaning services - ${name}`);
       window.open(`https://wa.me/${phoneNumber}?text=${whatsappMessage}`, "_blank");
       form.reset();
     });
